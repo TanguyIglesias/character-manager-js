@@ -1,18 +1,5 @@
-//import axios from "axios";
 
-let base64Image = (image) => {
-  var canvas = document.createElement("canvas");
-  canvas.width = image.width;
-  canvas.height = image.height;
-  var ctx = canvas.getContext("2d");
-  ctx.drawImage(image, 0, 0);
-  var dataURL = canvas.toDataURL("image/png");
-  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
-
-var base64 = base64Image(document.getElementsByClassName("imageCharacter"))
-
-
+  
 
 let character = () => {
   axios.get('https://character-database.becode.xyz/characters').then((response) => {
@@ -23,10 +10,13 @@ let character = () => {
       let error = "<h2 class='error'>personnage inexistant</h2>";
       document.querySelector(".body__container-foot").innerHTML = error;
     }else{
-      let displayCharacter = 
-      `<img class="imageCharacter" src="${response.data[0].image}">`
-
-      document.querySelector('.body__container-foot').innerHTML = displayCharacter
+     for (let i=0; i<response.data.length;i++ ){
+      let affichage =
+      `<img class="imageCharacter" id="image[i]" src="data:image/png;base64,${response.data[i]}>`
+      document.querySelector(".body__container-foot").innerHTML= affichage
+      console.log(response.data[i])
+     }
+    
     }
     
   })
