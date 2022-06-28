@@ -9,5 +9,9 @@
   },
   "devDependencies": {
     "vite": "^2.9.9"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "requirejs": "^2.3.6"
   }
 }

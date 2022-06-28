@@ -2,4 +2,27 @@ body {
   background-repeat: no-repeat;
   background-size: auto;
   background-position: initial;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+body .body__container-head, body .body__container-foot {
+  border: 2px solid black;
+  background-color: white;
+  height: 500px;
+  width: 100%;
+}
+body .body__container-foot {
+  background-color: cyan;
+  height: 300px;
 }/*# sourceMappingURL=style.css.map */

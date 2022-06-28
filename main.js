@@ -1,10 +1,15 @@
-/*import '..src/css/style.css'
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Vite!</h1>
-  <a href="https://vitejs.dev/guide/features.html" target="_blank">Documentation</a>  
-`*/
 
+let character = () => {
+  axios.get('https://character-database.becode.xyz/characters').then(Response => {
+    console.log(Response)
+  })
+}
+
+character()
+
+//import{axiosCharacter} from '/src/script/character.js'
+  //axiosCharacter()
 
 const bodyBackgroundRandom = ["/src/images/arene1.jpg","/src/images/arene2.jpg","/src/images/arene3.jpg","/src/images/arene4.jpg","/src/images/arene5.png"]
 let imgRand = bodyBackgroundRandom[Math.floor(Math.random() * bodyBackgroundRandom.length)]
