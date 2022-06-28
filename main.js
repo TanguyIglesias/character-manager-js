@@ -1,4 +1,4 @@
-
+import "./style.scss"
   
 
 let character = () => {
