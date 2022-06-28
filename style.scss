@@ -39,6 +39,7 @@ body{
             border: 1px solid black;
             width: 70px;
             height: 70px;
+            display: block;
         }
         .imageCharacter:hover{
             border: 1px solid white;
@@ -46,5 +47,6 @@ body{
         :not(#createdCharacter){
             order: -1;
         }
+        
     }
 }
