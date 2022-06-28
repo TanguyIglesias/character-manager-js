@@ -12,6 +12,16 @@ body{
         // background-color: white;
         height: 500px;
         width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+
+        .container__form{
+            width: 50%;
+            height: 50%;
+            background-color: black;
+        }
     }
     .body__container-foot{ 
         @extend .body__container-head;
