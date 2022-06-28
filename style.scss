@@ -20,12 +20,15 @@ body{
         width: 80%;
         display: flex;
         flex-wrap: wrap;
+        flex-basis: fit-content;
         justify-content: center;
         gap: 2px;
 
         .imageCharacter{
             border-radius: 15px;
             border: 1px solid black;
+            width: 70px;
+            height: 70px;
         }
     }
 }
