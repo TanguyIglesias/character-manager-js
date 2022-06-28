@@ -30,5 +30,11 @@ body{
             width: 70px;
             height: 70px;
         }
+        .imageCharacter:hover{
+            border: 1px solid white;
+        }
+        :not(#createdCharacter){
+            order: -1;
+        }
     }
 }

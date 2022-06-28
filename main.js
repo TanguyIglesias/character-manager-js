@@ -18,6 +18,8 @@ let character = () => {
       console.log(response.data[i])
      }
     
+    
+
     }
     
   })
@@ -28,10 +30,20 @@ let character = () => {
 character()
 
 
-//import{axiosCharacter} from '/src/script/character.js'
-  //axiosCharacter()
-
 const bodyBackgroundRandom = ["/src/images/arene1.jpg","/src/images/arene2.jpg","/src/images/arene3.jpg","/src/images/arene4.jpg","/src/images/arene5.png"]
 let imgRand = bodyBackgroundRandom[Math.floor(Math.random() * bodyBackgroundRandom.length)]
 const selectBody = document.querySelector('body')
 selectBody.setAttribute('style', `background-image: url("${imgRand}");`)
+
+
+function addCharacter(){
+  let imgAdd = document.createElement('img')
+  imgAdd.setAttribute('class', 'imageCharacter')
+  imgAdd.setAttribute('id', 'createdCharacter')
+  imgAdd.setAttribute('src', '/src/images/plus.png')
+
+  document.querySelector(".body__container-foot").appendChild(imgAdd)
+
+}
+
+addCharacter()
