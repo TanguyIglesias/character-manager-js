@@ -17,5 +17,15 @@ body{
         @extend .body__container-head;
         // background-color: cyan;
         height: 300px;
+        width: 80%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2px;
+
+        .imageCharacter{
+            border-radius: 15px;
+            border: 1px solid black;
+        }
     }
 }
