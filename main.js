@@ -14,8 +14,6 @@ let character = () => {
       `<img class="imageCharacter" id="image[${i}]" src="data:image/png;base64,${response.data[i].image}">`
       document.querySelector(".body__container-foot").innerHTML+= affichage
      }
-    
-    
 
     }
     
@@ -25,13 +23,10 @@ let character = () => {
 character()
 
 
-
-
 const bodyBackgroundRandom = ["/src/images/arene1.jpg","/src/images/arene2.jpg","/src/images/arene3.jpg","/src/images/arene4.jpg","/src/images/arene5.png"]
 let imgRand = bodyBackgroundRandom[Math.floor(Math.random() * bodyBackgroundRandom.length)]
 const selectBody = document.querySelector('body')
 selectBody.setAttribute('style', `background-image: url("${imgRand}");`)
-
 
 
 
@@ -42,6 +37,10 @@ function addCharacter(){
   imgAdd.setAttribute('src', '/src/images/plus.png')
 
   document.querySelector(".body__container-foot").appendChild(imgAdd)
-
+  
 }
+
 addCharacter()
+
+document.querySelector('#createdCharacter').addEventListener('click', console.log('isoké'))
+
