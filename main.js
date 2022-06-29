@@ -8,18 +8,19 @@ import "./style.scss"
         let error = "<h2 class='error'>personnage inexistant</h2>";
         document.querySelector(".body__container-foot").innerHTML = error;
       }else{
-      for (let i=0; i<response.data.length;i++ ){
+        for (let i=0; i<response.data.length;i++ ){
         
-        let affichage =
-        `<img class="imageCharacter" id="image[${i}]" src="data:image/png;base64,${response.data[i].image}">`
-        document.querySelector(".body__container-foot").innerHTML+= affichage
-      }
+          const createImg = document.createElement('img')
+          createImg.setAttribute('class', 'imageCharacter')
+          createImg.setAttribute('id', `image[${i}]`)
+          createImg.setAttribute('src', `data:image/png;base64,${response.data[i].image}`)
+          document.querySelector(".body__container-foot").appendChild(createImg)
+
+        }
 
       }
       
     })
-
-    //addCharacter()
   }
 
 
@@ -33,22 +34,11 @@ function randomBG(){
   character()
 }
 
-/*function addCharacter(){
-  let imgAdd = document.createElement('img')
-  imgAdd.setAttribute('class', 'imageCharacter')
-  imgAdd.setAttribute('id', 'createdCharacter')
-  imgAdd.setAttribute('src', '/src/images/plus.png')
-  
-  document.querySelector(".body__container-foot").appendChild(imgAdd)
-}*/
-
 function test(){
-  console.log('isoké')
+  console.log('isoké');
 }
 
 randomBG()
 
 
 document.querySelector('#createdCharacter').addEventListener('click', test);
-
-
