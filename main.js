@@ -1,7 +1,7 @@
 import "./style.scss"
   
 
-  let character = () => {
+  const character = () => {
     axios.get('https://character-database.becode.xyz/characters').then((response) => {
     
       if (typeof response === "undefined") {
@@ -28,16 +28,20 @@ import "./style.scss"
             description.innerHTML = response.data[i].description
 
             if(document.querySelector('.descOne').childNodes.length !== 0){
+              inputDelEditTwo()
               document.querySelector(".descTwo").appendChild(name)
               document.querySelector(".descTwo").appendChild(subtitle)
               document.querySelector(".descTwo").appendChild(img)
               document.querySelector(".descTwo").appendChild(description)
-            }else{
               
+
+            }else{
+              inputDelEditOne()
               document.querySelector(".descOne").appendChild(name)
               document.querySelector(".descOne").appendChild(subtitle)
               document.querySelector(".descOne").appendChild(img)
               document.querySelector(".descOne").appendChild(description)
+              
             }
 
             
@@ -49,14 +53,12 @@ import "./style.scss"
               if (document.querySelector('.descTwo').childNodes.length !== 0){
                 console.log('pas de place')
               }else{
+                
                 createDesc()
               }
               });
-
-            
-
         }
-
+        
       }
       
     })
@@ -98,28 +100,31 @@ function createFormAdd(){
   createCharImg.setAttribute('type', 'file')
   createCharImg.setAttribute('accept', 'image/png, image/jpeg')
   createCharImg.setAttribute('placeholder', 'Image')
-  createCharImg.setAttribute('class', 'charImg')
+  createCharImg.setAttribute('id', 'charImg')
 
   const createSubmit = document.createElement('input')
   createSubmit.setAttribute('type', 'button')
   createSubmit.setAttribute('class', 'charSubmit')
+
+  const divImg = document.createElement('div')
+  const img = document.createElement('img')
+  img.setAttribute('id','output')
 
   createForm.appendChild(createCharName)
   createForm.appendChild(createCharTitle)
   createForm.appendChild(createCharDesc)
   createForm.appendChild(createCharImg)
   createForm.appendChild(createSubmit)
+  createForm.appendChild(divImg)
+  divImg.appendChild(img)
+
+  viewImgFormat();
 
   const buttonSubmit = document.querySelector('.charSubmit')
 
   buttonSubmit.addEventListener('click', getInfos)
-  let chara = {
-    "name" : `${createCharName.value}`,
-    "shortDescription":createCharTitle.innerText,
-    "description":createCharDesc.value,
-    "image": createCharImg.value
-  }
-  return chara
+
+ 
 }
     
 
@@ -138,22 +143,87 @@ document.querySelector('#createdCharacter').addEventListener('click', function()
 });
 
 
-function test(){
-  console.log('isoké')
-}
 
 function getInfos(){
 
+  let url ='https://character-database.becode.xyz/characters'
   let infoName = document.querySelector('.charName').value
   let infoTitle = document.querySelector('.charTitle').value
   let infoDesc = document.querySelector('.charDesc').value
-  let infoImg = document.querySelector('.charImg').value
+  let infoImg = document.querySelector('#output').src
+  let dataImg = infoImg.replace('data:image/png;base64,', '').replace('data:image/jpeg;base64,', '');
 
   console.log(infoName)
   console.log(infoTitle)
-  console.log(infoDesc)
-  // console.log(infoImg)
-  console.log(createFormAdd())
+  console.log(dataImg)
+
+  let character ={
+        description: infoDesc,
+        image: dataImg,
+        name: infoName,
+        shortDescription: infoTitle
+  }
+
+  axios({
+    method :"post",
+    url: url,
+    data: character
+  })
+  .then(function (response) {
+    console.log(response);
+    location.reload();
+  })
+.catch(function (error) {
+    console.log(error);
+  });
 
 }
 
+const viewImgFormat = () => {
+
+  const output = document.getElementById('output');
+  if (window.FileList && window.File && window.FileReader) {
+      document.getElementById('charImg').addEventListener('change', event => {
+          output.src = '';
+          const file = event.target.files[0];
+          if (!file.type) {
+              return;
+          }
+          if (!file.type.match('image.*')) {
+              return;
+          }
+          const reader = new FileReader();
+          reader.addEventListener('load', event => {
+              output.src = event.target.result;
+          });
+          reader.readAsDataURL(file);
+      });
+  }
+};
+
+
+function inputDelEditOne(){
+  const inputEditOne = document.createElement('input')
+  inputEditOne.setAttribute('id', 'editCharaOne')
+  inputEditOne.setAttribute('value', 'edit')
+  document.querySelector('.descOne').appendChild(inputEditOne)
+
+
+  const inputDeleteOne = document.createElement('input')
+  inputDeleteOne.setAttribute('id', 'deleteCharaOne')
+  inputDeleteOne.setAttribute('value', 'Delete')
+  document.querySelector('.descOne').appendChild(inputDeleteOne)
+}
+
+function inputDelEditTwo(){
+  const inputEditTwo = document.createElement('input')
+  inputEditTwo.setAttribute('id', 'editCharaTwo')
+  inputEditTwo.setAttribute('value', 'edit')
+  document.querySelector('.descTwo').appendChild(inputEditTwo)
+
+
+  const inputDeleteTwo = document.createElement('input')
+  inputDeleteTwo.setAttribute('id', 'deleteCharaTwo')
+  inputDeleteTwo.setAttribute('value', 'Delete')
+  document.querySelector('.descTwo').appendChild(inputDeleteTwo)
+}
