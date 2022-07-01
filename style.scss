@@ -16,31 +16,33 @@ html{
 
     .body__container-head {
       height: 50%;
-      width: 80%;
+      width: 100%;
       display: flex;
       justify-content: space-around;
-      align-items: center;
       column-gap: 20px;
 
       .versus{
         position: absolute;
         display: none;
         width: 15%;
+        min-width: 140px;
+        height: 50%;
         justify-content: center;
+        align-items: center;
 
         .versus__img{
           width: 100%;
+          height: 30%;
         }
       }
 
       article{
-          width: 450px;
-          min-width: 170px;
+          width: 30%;
+          min-width: 200px;
           //height: 350px;
-          background-color: rgb(255, 255, 255, 0.2);
+          //background-color: rgb(255, 255, 255, 0.2);
           border-radius: 15px;
           display: flex;
-          flex-wrap: wrap;
           flex-direction: column;
           align-items: center ;
           margin:0;
@@ -84,13 +86,13 @@ html{
             width: 50%;
             min-width: 140px;
             text-align: center;
-            margin: 10px 0 0 10px;
+            margin: 10px 0 0 0;
             display: flex;
             flex-direction: column;
             gap: 10px;
             h2{
               margin: 0;
-              background-color: rgba(255, 255, 255, 0.5);
+              background-color: rgba(255, 255, 255, 0.7);
               border-radius: 15px;
               box-shadow: 1px 1px black;
               overflow: hidden;
@@ -109,12 +111,11 @@ html{
           min-width: 250px;
           max-height: 50%;
           //overflow:hidden;
-          margin: 10px;
+          margin: 20px;
           border-radius: 15px;
 
           img{
             width: 50%;
-            margin: 0 5px 0 0;
             border-radius: 15px;
           }
           .buttonDescOne{
@@ -132,6 +133,7 @@ html{
             display: block;
             border-radius: 15px;
             //max-width: 35%;
+            min-width: 250px;
             height: 100%;
             padding: 10px;
             font-size: 13px;
