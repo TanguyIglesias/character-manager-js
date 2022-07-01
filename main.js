@@ -21,12 +21,23 @@ import "./style.scss"
             const name = document.createElement("h2")
             const subtitle = document.createElement("h4")
             const img = document.createElement("div")
+            const buttonDescOne = document.createElement('input')
+            
             const description = document.createElement("div")
             const imgID = response.data[i].id
             name.innerText = response.data[i].name
             subtitle.innerText = response.data[i].shortDescription
             img.innerHTML = `<img src="data:image/png;base64,${response.data[i].image}">`
             description.innerHTML = response.data[i].description
+            buttonDescOne.setAttribute('type', 'button')
+            buttonDescOne.setAttribute('class', 'buttonDescOne')
+            buttonDescOne.setAttribute('value', '=>')
+            description.setAttribute('style', 'display: none;')
+            description.setAttribute('class', 'description')
+            const buttonDescTwo = document.createElement('input')
+            buttonDescTwo.setAttribute('type', 'button')
+            buttonDescTwo.setAttribute('class', 'buttonDescTwo')
+            buttonDescTwo.setAttribute('value', '=>')
 
             if(document.querySelector('.descOne').childNodes.length !== 0){
               inputDelEditTwo()
@@ -34,6 +45,9 @@ import "./style.scss"
               document.querySelector(".descTwo").appendChild(subtitle)
               document.querySelector(".descTwo").appendChild(img)
               document.querySelector(".descTwo").appendChild(description)
+              document.querySelector(".descTwo").appendChild(buttonDescTwo)
+
+              displayDescTwo()
 
               document.querySelector("#deleteCharaTwo").addEventListener("click", function(){
 
@@ -55,6 +69,7 @@ import "./style.scss"
                   });
                 }
               })
+              buttonDeleteOne()
 
               document.querySelector("#editCharaTwo").addEventListener("click", function(){
                 let url = `https://character-database.becode.xyz/characters/${imgID}`
@@ -94,8 +109,8 @@ import "./style.scss"
                 }
                 
               })
-              
 
+              buttonDeleteTwo()
 
 
 
@@ -105,6 +120,9 @@ import "./style.scss"
               document.querySelector(".descOne").appendChild(subtitle)
               document.querySelector(".descOne").appendChild(img)
               document.querySelector(".descOne").appendChild(description)
+              document.querySelector(".descOne").appendChild(buttonDescOne)
+
+              displayDescOne()
 
               document.querySelector("#deleteCharaOne").addEventListener("click", function(){
 
@@ -125,7 +143,7 @@ import "./style.scss"
                     console.log(error);
                   });
                 }
-              })
+              })              
               
               document.querySelector("#editCharaOne").addEventListener("click", function(){
                 let url = `https://character-database.becode.xyz/characters/${imgID}`
@@ -134,13 +152,13 @@ import "./style.scss"
                   createFormAdd()
                   document.querySelector('.charSubmit').setAttribute('style', 'display: none;')
                   document.querySelector('.charSubmitEdit').setAttribute('style', 'display: initial;')
-
-
+                  
+                  
                   let infoName = document.querySelector('.charName')
                   let infoTitle = document.querySelector('.charTitle')
                   let infoDesc = document.querySelector('.charDesc')
                   let infoImg = document.querySelector('#output').src
-    
+                  
                   infoName.value = response.data[i].name
                   infoTitle.value = response.data[i].shortDescription
                   infoDesc.value = response.data[i].description
@@ -149,7 +167,7 @@ import "./style.scss"
                   createFormAdd()
                   document.querySelector('.charSubmit').setAttribute('style', 'display: none;')
                   document.querySelector('.charSubmitEdit').setAttribute('style', 'display: initial;')
-
+                  
                   let infoName = document.querySelector('.charName')
                   let infoTitle = document.querySelector('.charTitle')
                   let infoDesc = document.querySelector('.charDesc')
@@ -161,22 +179,25 @@ import "./style.scss"
                   infoDesc.value = response.data[i].description
                   infoImg.src = `data:image/png;base64,${response.data[i].image}`
                   submitEdit(charaId)
-
+                  
+                  
                 }
               })
+              
+              buttonDeleteOne()
               
 
               
             }
             
-          
+
              
           }
           let selectImgs = document.querySelector(`.img${i}`)
           //selectImgs.addEventListener("click", createDesc)
           
             selectImgs.addEventListener('click', function(){
-              if (document.querySelector('.descTwo').childNodes.length !== 0){
+              if (document.querySelector('.descTwo').childNodes.length !== 0 && document.querySelector('.descOne').childNodes.length !== 0){
                 console.log('pas de place')
               }else{
                 
@@ -347,6 +368,13 @@ function inputDelEditOne(){
   inputDeleteOne.setAttribute('value', 'Delete')
   inputDeleteOne.setAttribute('type', 'button')
   document.querySelector('.descOne').appendChild(inputDeleteOne)
+
+  const buttonVidageOne = document.createElement('input')
+  buttonVidageOne.setAttribute('class', 'vidageOne')
+  buttonVidageOne.setAttribute('type', 'button')
+  buttonVidageOne.setAttribute('value', 'X')
+  document.querySelector('.descOne').appendChild(buttonVidageOne)
+
 }
 
 function inputDelEditTwo(){
@@ -362,6 +390,13 @@ function inputDelEditTwo(){
   inputDeleteTwo.setAttribute('value', 'Delete')
   inputDeleteTwo.setAttribute('type', 'button')
   document.querySelector('.descTwo').appendChild(inputDeleteTwo)
+
+  const buttonVidageTwo = document.createElement('input')
+  buttonVidageTwo.setAttribute('class', 'vidageTwo')
+  buttonVidageTwo.setAttribute('type', 'button')
+  buttonVidageTwo.setAttribute('value', 'X')
+  document.querySelector('.descTwo').appendChild(buttonVidageTwo)
+  
 }
 
 function submitEdit(id){
@@ -409,4 +444,49 @@ function submitEdit(id){
 .catch(error => {
   console.log('Noob !', error);
 });
+}
+
+function buttonDeleteOne(){
+  let descOne = document.querySelector('.descOne')
+  document.querySelector(".vidageOne").addEventListener("click", function(){
+    descOne.innerHTML=''
+  })
+}
+
+function buttonDeleteTwo(){
+  let descTwo = document.querySelector('.descTwo')
+  document.querySelector(".vidageTwo").addEventListener("click", function(){
+    descTwo.innerHTML=''
+  })
+}
+
+function displayDescOne(){
+  let buttonDescOne = document.querySelector('.buttonDescOne')
+  let description =document.querySelector('.description')
+  buttonDescOne.addEventListener('click', function(){
+
+    if(buttonDescOne.value == '=>'){
+      description.setAttribute('style', 'display: initial;')
+      buttonDescOne.setAttribute('value', '<=')
+    }else{
+      description.setAttribute('style', 'display: none;')
+      buttonDescOne.setAttribute('value', '=>')
+    }
+  })
+}
+
+function displayDescTwo(){
+  let buttonDescTwo = document.querySelector(`.buttonDescTwo`)
+  let articleTwo = document.querySelector(`.descTwo`)
+  let description = articleTwo.querySelector(`.description`)
+  buttonDescTwo.addEventListener('click', function(){
+
+    if(buttonDescTwo.value == '=>'){
+      description.setAttribute('style', 'display: initial;')
+      buttonDescTwo.setAttribute('value', '<=')
+    }else{
+      description.setAttribute('style', 'display: none;')
+      buttonDescTwo.setAttribute('value', '=>')
+    }
+  })
 }
