@@ -1,62 +1,193 @@
-body {
-  background-repeat: no-repeat;
-  background-size: auto;
-  background-position: initial;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+html{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 
-  .body__container-head {
-    // border: 2px solid black;
-    // background-color: white;
-    height: 500px;
-    width: 100%;
+  body {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: initial;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
+    min-width: 100%;
+    min-height: 100%;
+    justify-content: space-around;
 
-    article{
-        width: 25%;
-        height: 80%;
-        background-color: rgb(255, 255, 255, 0.5);
-        overflow: scroll;
-        text-align: center;
-    }
+    .body__container-head {
+      height: 50%;
+      width: 80%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      column-gap: 20px;
 
-    .form-container {
-      width: 25%;
-      height: 80%;
-      .form {
-        width: 100%;
-        height: 100%;
-        background-color: white;
+      .versus{
+        position: absolute;
+        display: none;
+        width: 15%;
+        justify-content: center;
+
+        .versus__img{
+          width: 100%;
+        }
+      }
+
+      article{
+          width: 450px;
+          min-width: 170px;
+          //height: 350px;
+          background-color: rgb(255, 255, 255, 0.2);
+          border-radius: 15px;
+          display: flex;
+          flex-wrap: wrap;
+          flex-direction: column;
+          align-items: center ;
+          margin:0;
+          justify-content: space-around;
+          
+          #buttonContainer{
+            width: 100%;
+            min-width: 150px;
+            display: flex;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            gap: 10px;
+            justify-content: end;
+
+            #editCharaOne{
+              width:20%;
+              min-width: 50px;
+              border-radius: 15px;
+            }
+            #deleteCharaOne {
+              @extend #editCharaOne;
+            }
+            .vidageOne{
+              @extend #editCharaOne;
+            }
+            
+            #editCharaTwo{
+              @extend #editCharaOne;
+            }
+            #deleteCharaTwo{
+              @extend #editCharaOne;
+            }
+            .vidageTwo{
+              @extend #editCharaOne;
+            }
+            
+            
+          }
+
+          #nameContainer{
+            width: 50%;
+            min-width: 140px;
+            text-align: center;
+            margin: 10px 0 0 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            h2{
+              margin: 0;
+              background-color: rgba(255, 255, 255, 0.5);
+              border-radius: 15px;
+              box-shadow: 1px 1px black;
+              overflow: hidden;
+            }
+            h4{
+              @extend h2;
+            }
+          }
+
+        #descImgContainer{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 95%;
+          min-width: 250px;
+          max-height: 50%;
+          //overflow:hidden;
+          margin: 10px;
+          border-radius: 15px;
+
+          img{
+            width: 50%;
+            margin: 0 5px 0 0;
+            border-radius: 15px;
+          }
+          .buttonDescOne{
+            border-radius: 15px;
+            border: none;
+            box-shadow: 1px 1px black;
+            transform: rotate(90deg);
+            align-self: center;
+          }
+          .buttonDescTwo{
+          @extend .buttonDescOne;
+          
+          }
+          .description{
+            display: block;
+            border-radius: 15px;
+            //max-width: 35%;
+            height: 100%;
+            padding: 10px;
+            font-size: 13px;
+            background-color: white;
+            overflow-wrap:break-word;
+            overflow-y: scroll;
+            
+          }
+          ::-webkit-scrollbar {
+            width: 5px;
+          }
+          ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+          }
+          ::-webkit-scrollbar-thumb {
+            background: black;
+            border-radius: 10px;
+          }
+
+        }
+          
+      }
+
+      .form-container {
+        width: 400px;
+        height: 350px;
+        .form {
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          position: relative;
+        }
       }
     }
-  }
-  .body__container-foot {
-    @extend .body__container-head;
-    // background-color: cyan;
-    height: 300px;
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-basis: fit-content;
-    justify-content: center;
-    gap: 2px;
+    .body__container-foot {
+      @extend .body__container-head;
+      display: flex;
+      flex-wrap: wrap;
+      flex-basis: fit-content;
+      justify-content: center;
+      gap: 2px;
 
-    .imageCharacter {
-      border-radius: 15px;
-      border: 1px solid black;
-      width: 70px;
-      height: 70px;
-      display: block;
-    }
-    .imageCharacter:hover {
-      border: 1px solid white;
-    }
-    :not(#createdCharacter) {
-      order: -1;
+      .imageCharacter {
+        border-radius: 15px;
+        border: 1px solid black;
+        width: 70px;
+        height: 70px;
+        display: block;
+      }
+      .imageCharacter:hover {
+        border: 1px solid white;
+      }
+      :not(#createdCharacter) {
+        order: -1;
+      }
     }
   }
 }

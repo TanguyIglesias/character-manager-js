@@ -20,14 +20,16 @@ import "./style.scss"
           const createDesc=()=>{
             const name = document.createElement("h2")
             const subtitle = document.createElement("h4")
-            const img = document.createElement("div")
             const buttonDescOne = document.createElement('input')
-            
+            const buttonContainer = document.createElement('div')
+            const nameContainer = document.createElement('div')
+            const descImgContainer = document.createElement('div')
             const description = document.createElement("div")
             const imgID = response.data[i].id
+
             name.innerText = response.data[i].name
             subtitle.innerText = response.data[i].shortDescription
-            img.innerHTML = `<img src="data:image/png;base64,${response.data[i].image}">`
+            descImgContainer.innerHTML += `<img src="data:image/png;base64,${response.data[i].image}">`
             description.innerHTML = response.data[i].description
             buttonDescOne.setAttribute('type', 'button')
             buttonDescOne.setAttribute('class', 'buttonDescOne')
@@ -38,14 +40,24 @@ import "./style.scss"
             buttonDescTwo.setAttribute('type', 'button')
             buttonDescTwo.setAttribute('class', 'buttonDescTwo')
             buttonDescTwo.setAttribute('value', '=>')
+            buttonContainer.setAttribute('id', 'buttonContainer')
+            nameContainer.setAttribute('id', 'nameContainer')
+            descImgContainer.setAttribute('id', 'descImgContainer')
 
             if(document.querySelector('.descOne').childNodes.length !== 0){
+
+              const descTwo=document.querySelector(".descTwo")
+
+              document.querySelector(".descTwo").appendChild(buttonContainer)
               inputDelEditTwo()
-              document.querySelector(".descTwo").appendChild(name)
-              document.querySelector(".descTwo").appendChild(subtitle)
-              document.querySelector(".descTwo").appendChild(img)
-              document.querySelector(".descTwo").appendChild(description)
-              document.querySelector(".descTwo").appendChild(buttonDescTwo)
+              document.querySelector(".descTwo").appendChild(nameContainer)
+              descTwo.querySelector("#nameContainer").appendChild(name)
+              descTwo.querySelector("#nameContainer").appendChild(subtitle)
+              document.querySelector(".descTwo").appendChild(descImgContainer)
+              descTwo.querySelector("#descImgContainer").appendChild(buttonDescTwo)
+              descTwo.querySelector("#descImgContainer").appendChild(description)
+
+              document.querySelector('.versus').setAttribute('style', 'display: flex;')
 
               displayDescTwo()
 
@@ -115,13 +127,19 @@ import "./style.scss"
 
 
             }else{
-              inputDelEditOne()
-              document.querySelector(".descOne").appendChild(name)
-              document.querySelector(".descOne").appendChild(subtitle)
-              document.querySelector(".descOne").appendChild(img)
-              document.querySelector(".descOne").appendChild(description)
-              document.querySelector(".descOne").appendChild(buttonDescOne)
 
+              const descOne=document.querySelector(".descOne")
+
+              document.querySelector(".descOne").appendChild(buttonContainer)
+              inputDelEditOne()
+              document.querySelector(".descOne").appendChild(nameContainer)
+              document.querySelector("#nameContainer").appendChild(name)
+              document.querySelector("#nameContainer").appendChild(subtitle)
+              document.querySelector(".descOne").appendChild(descImgContainer)
+              descOne.querySelector("#descImgContainer").appendChild(buttonDescOne)
+              descOne.querySelector("#descImgContainer").appendChild(description)
+
+              
               displayDescOne()
 
               document.querySelector("#deleteCharaOne").addEventListener("click", function(){
@@ -201,6 +219,9 @@ import "./style.scss"
                 console.log('pas de place')
               }else{
                 
+                if(document.querySelector('.descTwo').childNodes.length !== 0 && document.querySelector('.descOne').childNodes.length == 0){
+                  document.querySelector('.versus').setAttribute('style', 'display: flex;')
+                }
                 createDesc()
               }
               });
@@ -214,7 +235,7 @@ import "./style.scss"
 
 
 function randomBG(){
-  const bodyBackgroundRandom = ["/src/images/arene1.jpg","/src/images/arene2.jpg","/src/images/arene3.jpg","/src/images/arene4.jpg","/src/images/arene5.png"]
+  const bodyBackgroundRandom = ["/src/images/arene1.jpg","/src/images/arene2.jpg","/src/images/arene3.jpg","/src/images/arene4.jpg","/src/images/arene5.png",'/src/images/arene6.jpg']
   let imgRand = bodyBackgroundRandom[Math.floor(Math.random() * bodyBackgroundRandom.length)]
   const selectBody = document.querySelector('body')
   selectBody.setAttribute('style', `background-image: url("${imgRand}");`)
@@ -356,46 +377,48 @@ const viewImgFormat = () => {
 
 
 function inputDelEditOne(){
+  const descOne= document.querySelector('.descOne')
   const inputEditOne = document.createElement('input')
   inputEditOne.setAttribute('id', 'editCharaOne')
   inputEditOne.setAttribute('value', 'edit')
   inputEditOne.setAttribute('type', 'button')
-  document.querySelector('.descOne').appendChild(inputEditOne)
+  descOne.querySelector('#buttonContainer').appendChild(inputEditOne)
 
 
   const inputDeleteOne = document.createElement('input')
   inputDeleteOne.setAttribute('id', 'deleteCharaOne')
   inputDeleteOne.setAttribute('value', 'Delete')
   inputDeleteOne.setAttribute('type', 'button')
-  document.querySelector('.descOne').appendChild(inputDeleteOne)
+  descOne.querySelector('#buttonContainer').appendChild(inputDeleteOne)
 
   const buttonVidageOne = document.createElement('input')
   buttonVidageOne.setAttribute('class', 'vidageOne')
   buttonVidageOne.setAttribute('type', 'button')
   buttonVidageOne.setAttribute('value', 'X')
-  document.querySelector('.descOne').appendChild(buttonVidageOne)
+  descOne.querySelector('#buttonContainer').appendChild(buttonVidageOne)
 
 }
 
 function inputDelEditTwo(){
+  const descTwo= document.querySelector('.descTwo')
   const inputEditTwo = document.createElement('input')
   inputEditTwo.setAttribute('id', 'editCharaTwo')
   inputEditTwo.setAttribute('value', 'edit')
   inputEditTwo.setAttribute('type', 'button')
-  document.querySelector('.descTwo').appendChild(inputEditTwo)
+  descTwo.querySelector('#buttonContainer').appendChild(inputEditTwo)
 
 
   const inputDeleteTwo = document.createElement('input')
   inputDeleteTwo.setAttribute('id', 'deleteCharaTwo')
   inputDeleteTwo.setAttribute('value', 'Delete')
   inputDeleteTwo.setAttribute('type', 'button')
-  document.querySelector('.descTwo').appendChild(inputDeleteTwo)
+  descTwo.querySelector('#buttonContainer').appendChild(inputDeleteTwo)
 
   const buttonVidageTwo = document.createElement('input')
   buttonVidageTwo.setAttribute('class', 'vidageTwo')
   buttonVidageTwo.setAttribute('type', 'button')
   buttonVidageTwo.setAttribute('value', 'X')
-  document.querySelector('.descTwo').appendChild(buttonVidageTwo)
+  descTwo.querySelector('#buttonContainer').appendChild(buttonVidageTwo)
   
 }
 
@@ -450,19 +473,24 @@ function buttonDeleteOne(){
   let descOne = document.querySelector('.descOne')
   document.querySelector(".vidageOne").addEventListener("click", function(){
     descOne.innerHTML=''
+    document.querySelector('.versus').setAttribute('style', 'display: none;')
   })
+  
 }
 
 function buttonDeleteTwo(){
   let descTwo = document.querySelector('.descTwo')
   document.querySelector(".vidageTwo").addEventListener("click", function(){
     descTwo.innerHTML=''
+    document.querySelector('.versus').setAttribute('style', 'display: none;')
   })
+  
 }
 
 function displayDescOne(){
   let buttonDescOne = document.querySelector('.buttonDescOne')
-  let description =document.querySelector('.description')
+  let articleOne = document.querySelector(`.descOne`)
+  let description = articleOne.querySelector('.description')
   buttonDescOne.addEventListener('click', function(){
 
     if(buttonDescOne.value == '=>'){
