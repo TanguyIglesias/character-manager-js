@@ -2,6 +2,9 @@ html{
   height: 100%;
   width: 100%;
   overflow: hidden;
+  font-family: 'Jost', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Press Start 2P', cursive;
 
   body {
     background-repeat: no-repeat;
@@ -13,60 +16,93 @@ html{
     min-width: 100%;
     min-height: 100%;
     justify-content: space-around;
+    margin: auto;
 
     .body__container-head {
       height: 50%;
       width: 100%;
       display: flex;
-      justify-content: space-around;
+      justify-content: space-evenly;
       column-gap: 20px;
+      position: relative;
+
+      .container-head-title{
+        position: absolute;
+        width: 50%;
+        text-transform: uppercase;
+        font-size: 5vw;
+        color: white;
+        background-color: rgb(0, 0, 0, 0.5);
+        border-radius: 15px;
+        padding: 20px;
+        animation-duration: 1.5s;
+        animation-name: clignoter;
+        animation-iteration-count: infinite;
+        transition: none;
+      }
+
+      @keyframes clignoter {
+        0%   { opacity:1; }
+        30%   {opacity:0; }
+        100% { opacity:1; }
+      }
 
       .versus{
         position: absolute;
+        top: 30%;
         display: none;
-        width: 15%;
-        min-width: 140px;
-        height: 50%;
+        width: 30%;
+        height: 23vw;
         justify-content: center;
         align-items: center;
 
         .versus__img{
-          width: 100%;
-          height: 30%;
+          height: 100%;
+          object-fit: cover;
         }
       }
 
       article{
-          width: 30%;
-          min-width: 200px;
-          //height: 350px;
-          //background-color: rgb(255, 255, 255, 0.2);
+          width: 20%;
+          min-width: 220px;
           border-radius: 15px;
           display: flex;
           flex-direction: column;
           align-items: center ;
           margin:0;
           justify-content: space-around;
+          position: relative;
           
           #buttonContainer{
             width: 100%;
-            min-width: 150px;
             display: flex;
             margin-bottom: 10px;
             margin-top: 10px;
             gap: 10px;
-            justify-content: end;
+            justify-content: center;
 
             #editCharaOne{
-              width:20%;
-              min-width: 50px;
+              width:35%;
+              min-width: 65px;
               border-radius: 15px;
+              font-family: 'Jost', sans-serif;
+              font-family: 'Open Sans', sans-serif;
+              font-family: 'Press Start 2P', cursive;
+              font-size: 1vw;
+              padding: 5px 0;
             }
             #deleteCharaOne {
               @extend #editCharaOne;
             }
             .vidageOne{
               @extend #editCharaOne;
+              width: 25px;
+              height: 25px;
+              min-width: 0;
+              position: absolute;
+              right: 0;
+              top: 0;
+              font-size: 1vw;
             }
             
             #editCharaTwo{
@@ -77,21 +113,29 @@ html{
             }
             .vidageTwo{
               @extend #editCharaOne;
+              width: 25px;
+              height: 25px;
+              min-width: 0;
+              position: absolute;
+              right: 0;
+              top: 0;
+              font-size: 1vw;
             }
             
             
           }
 
           #nameContainer{
-            width: 50%;
-            min-width: 140px;
+            width: 80%;
             text-align: center;
             margin: 10px 0 0 0;
             display: flex;
             flex-direction: column;
             gap: 10px;
+
             h2{
               margin: 0;
+              padding: 5px 0;
               background-color: rgba(255, 255, 255, 0.7);
               border-radius: 15px;
               box-shadow: 1px 1px black;
@@ -107,15 +151,14 @@ html{
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          width: 95%;
-          min-width: 250px;
-          max-height: 50%;
-          //overflow:hidden;
-          margin: 20px;
+          width:  100%;
+          height: 95%;
+          margin: 20px 0 0 0;
           border-radius: 15px;
 
           img{
-            width: 50%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 15px;
           }
           .buttonDescOne{
@@ -132,15 +175,14 @@ html{
           .description{
             display: block;
             border-radius: 15px;
-            //max-width: 35%;
-            min-width: 250px;
+            max-width: 50%;
             height: 100%;
             padding: 10px;
             font-size: 13px;
             background-color: white;
             overflow-wrap:break-word;
             overflow-y: scroll;
-            
+            margin-bottom: 10px;
           }
           ::-webkit-scrollbar {
             width: 5px;
@@ -158,14 +200,62 @@ html{
           
       }
 
+      .descOne{
+        margin-left: 20px;
+      }
+      .descTwo{
+        margin-right: 20px;
+      }
+
       .form-container {
-        width: 400px;
+        width: 30%;
         height: 350px;
+        border-radius: 15px;
+
         .form {
           width: 100%;
           height: 100%;
           background-color: white;
           position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: end;
+          align-items: center;
+          gap: 8px;
+          border-radius: 15px;
+
+          input{
+            width: 85%;
+            border-radius: 15px;
+            margin-left: 5px;
+          }
+          .charName{
+            height: 10%;
+          }
+          .charTitle{
+            @extend .charName;
+          }
+          .charDesc{
+            height: 30%;
+          }
+          #charImg{
+            @extend .charName;
+            border-radius: 0;
+            margin-top: 5px;
+          }
+          .charSubmit{
+            height: 10%;
+          }
+
+          .deleteForm{
+            width: 25px;
+            height: 25px;
+            min-width: 0;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 15px;
+          }
         }
       }
     }
@@ -192,4 +282,118 @@ html{
       }
     }
   }
+}
+
+@media (max-width: 768px) {
+  html{
+    overflow: visible;
+
+    body{
+      background-size: auto;
+
+      .body__container-head{
+        flex-direction: column;
+        align-items: center;
+
+        .descOne{
+          width: 100%;
+          height: 50%;
+          margin: 0;
+          flex-direction: row-reverse;
+          justify-content: center;
+
+          #buttonContainer{
+            align-self: flex-end;
+            height: 100%;
+
+            .vidageOne{
+              font-size: 2vw;
+            }
+            #editCharaOne{
+              font-size: 2vw;
+              width: 45%;
+            }
+            #deleteCharaOne{
+              font-size: 2vw;
+              width: 45%;
+            }
+          }
+          #nameContainer{
+            align-self: flex-start;
+            margin-top: 20px;
+            font-size: 2.5vw;
+          }
+          #descImgContainer{
+            min-width: 120px;
+            .description{
+              max-width: 100%;
+              line-height: 1.5em;
+              font-size: 2.5vw;
+            }
+          }
+        }
+        .descTwo{
+          width: 100%;
+          height: 50%;
+          margin: 0 0 20px 0;
+          flex-direction: row-reverse;
+          justify-content: center;
+
+          #buttonContainer{
+            align-self: flex-end;
+            height: 100%;
+
+            .vidageTwo{
+              font-size: 2vw;
+            }
+            #editCharaTwo{
+              font-size: 2vw;
+              width: 45%;
+            }
+            #deleteCharaTwo{
+              font-size: 2vw;
+              width: 45%;
+            }
+          }
+          #nameContainer{
+            align-self: flex-start;
+            margin-top: 20px;
+            font-size: 2.5vw;
+          }
+          #descImgContainer{
+            min-width: 120px;
+            .description{
+              max-width: 100%;
+              line-height: 1.5em;
+              font-size: 2.5vw;
+            }
+          }
+        }
+        .versus{
+          height: 190px;
+        }
+        .form-container{
+          height: 250px;
+          width: 60%;
+          min-width: 260px;
+          margin: 10px 0;
+
+          .form{
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: start;
+
+            .charSubmit{
+
+              justify-self: center;
+            }
+          }
+        }
+      }
+
+      .body__container-foot{
+        flex-direction: row;
+      }
+    }
+  }   
 }

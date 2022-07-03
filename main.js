@@ -48,6 +48,10 @@ import "./style.scss"
 
               const descTwo=document.querySelector(".descTwo")
 
+              removeTitleSelect()
+
+              descTwo.setAttribute('style', 'background-color: rgb(0, 0, 0, 0.5);')
+
               document.querySelector(".descTwo").appendChild(buttonContainer)
               inputDelEditTwo()
               document.querySelector(".descTwo").appendChild(nameContainer)
@@ -124,11 +128,13 @@ import "./style.scss"
 
               buttonDeleteTwo()
 
-
-
             }else{
 
               const descOne=document.querySelector(".descOne")
+
+              removeTitleSelect()
+
+              descOne.setAttribute('style', 'background-color: rgb(0, 0, 0, 0.5);')
 
               document.querySelector(".descOne").appendChild(buttonContainer)
               inputDelEditOne()
@@ -204,15 +210,10 @@ import "./style.scss"
               
               buttonDeleteOne()
               
-
-              
             }
             
-
-             
           }
           let selectImgs = document.querySelector(`.img${i}`)
-          //selectImgs.addEventListener("click", createDesc)
           
             selectImgs.addEventListener('click', function(){
               if (document.querySelector('.descTwo').childNodes.length !== 0 && document.querySelector('.descOne').childNodes.length !== 0){
@@ -225,6 +226,7 @@ import "./style.scss"
                 createDesc()
               }
               });
+              
         }
         
       }
@@ -244,6 +246,11 @@ function randomBG(){
 }
 
 function createFormAdd(){
+
+  const createInputDeleteForm = document.createElement('input')
+  createInputDeleteForm.setAttribute('class', 'deleteForm')
+  createInputDeleteForm.setAttribute('type', 'button')
+  createInputDeleteForm.setAttribute('value', 'X')
   
   const createForm = document.createElement('form')
   createForm.setAttribute('class', 'form')
@@ -273,6 +280,7 @@ function createFormAdd(){
   const createSubmit = document.createElement('input')
   createSubmit.setAttribute('type', 'button')
   createSubmit.setAttribute('class', 'charSubmit')
+  createSubmit.setAttribute('value', 'Submit')
 
   const createSubmitEdit = document.createElement('input')
   createSubmitEdit.setAttribute('type', 'button')
@@ -283,6 +291,7 @@ function createFormAdd(){
   const img = document.createElement('img')
   img.setAttribute('id','output')
 
+  createForm.appendChild(createInputDeleteForm)
   createForm.appendChild(createCharName)
   createForm.appendChild(createCharTitle)
   createForm.appendChild(createCharDesc)
@@ -295,8 +304,19 @@ function createFormAdd(){
   viewImgFormat();
 
   const buttonSubmit = document.querySelector('.charSubmit')
+  const buttonDelForm = document.querySelector('.deleteForm')
+  const selectForm = document.querySelector('.form')
+  let descOne = document.querySelector('.descOne')
+  let descTwo = document.querySelector('.descTwo')
 
   buttonSubmit.addEventListener('click', getInfos)
+  buttonDelForm.addEventListener('click', function(){
+    selectForm.remove()
+    if(descOne.innerHTML == '' && descTwo.innerHTML == ''){
+      document.querySelector('.container-head-title').setAttribute('style', 'display: initial')
+    }
+  })
+
 
  
 }
@@ -306,7 +326,7 @@ randomBG()
 
 
 document.querySelector('#createdCharacter').addEventListener('click', function(){
-
+  removeTitleSelect()
   if(document.querySelector('.form')){
     document.querySelector('.form').remove()
     createFormAdd()
@@ -380,7 +400,7 @@ function inputDelEditOne(){
   const descOne= document.querySelector('.descOne')
   const inputEditOne = document.createElement('input')
   inputEditOne.setAttribute('id', 'editCharaOne')
-  inputEditOne.setAttribute('value', 'edit')
+  inputEditOne.setAttribute('value', 'Edit')
   inputEditOne.setAttribute('type', 'button')
   descOne.querySelector('#buttonContainer').appendChild(inputEditOne)
 
@@ -403,7 +423,7 @@ function inputDelEditTwo(){
   const descTwo= document.querySelector('.descTwo')
   const inputEditTwo = document.createElement('input')
   inputEditTwo.setAttribute('id', 'editCharaTwo')
-  inputEditTwo.setAttribute('value', 'edit')
+  inputEditTwo.setAttribute('value', 'Edit')
   inputEditTwo.setAttribute('type', 'button')
   descTwo.querySelector('#buttonContainer').appendChild(inputEditTwo)
 
@@ -471,18 +491,29 @@ function submitEdit(id){
 
 function buttonDeleteOne(){
   let descOne = document.querySelector('.descOne')
+  let descTwo = document.querySelector('.descTwo')
   document.querySelector(".vidageOne").addEventListener("click", function(){
     descOne.innerHTML=''
     document.querySelector('.versus').setAttribute('style', 'display: none;')
+    descOne.setAttribute('style', 'background-color: none;')
+    if(descOne.innerHTML == '' && descTwo.innerHTML == ''){
+      document.querySelector('.container-head-title').setAttribute('style', 'display: initial')
+    }
   })
+  
   
 }
 
 function buttonDeleteTwo(){
   let descTwo = document.querySelector('.descTwo')
+  let descOne = document.querySelector('.descOne')
   document.querySelector(".vidageTwo").addEventListener("click", function(){
     descTwo.innerHTML=''
     document.querySelector('.versus').setAttribute('style', 'display: none;')
+    descTwo.setAttribute('style', 'background-color: none;')
+    if(descOne.innerHTML == '' && descTwo.innerHTML == ''){
+      document.querySelector('.container-head-title').setAttribute('style', 'display: initial')
+    }
   })
   
 }
@@ -517,4 +548,8 @@ function displayDescTwo(){
       buttonDescTwo.setAttribute('value', '=>')
     }
   })
+}
+
+function removeTitleSelect(){
+    document.querySelector('.container-head-title').setAttribute('style', 'display: none')
 }
