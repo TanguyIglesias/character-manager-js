@@ -10,7 +10,7 @@ Select, Create, Edit or Delete a character
 
 ## Tech Stack
 
-**Client:** HTML, CSS, Saas, JS
+**Client:** HTML, CSS, Sass, JS
 
 **Server:** N/A
 
