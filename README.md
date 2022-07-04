@@ -24,3 +24,7 @@ This project is used by the following companies:
 ## Link
 
 https://tanguyiglesias.github.io/character-manager-js/
+
+## Preview
+
+![screen1](readme-chara-create.png)
