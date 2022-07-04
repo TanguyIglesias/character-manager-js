@@ -55,7 +55,6 @@ html{
         height: 23vw;
         justify-content: center;
         align-items: center;
-
         .versus__img{
           height: 100%;
           object-fit: cover;
@@ -255,6 +254,10 @@ html{
             top: 0;
             right: 0;
             border-radius: 15px;
+          }
+          #output{
+            display: block;
+            width:20%;
           }
         }
       }
