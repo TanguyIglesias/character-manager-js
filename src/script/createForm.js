@@ -1,5 +1,5 @@
-import { viewImgFormat } from './viewImgFormat';
-import { getInfos } from './getInfos';
+import { viewImgFormat } from './viewImgFormat.js';
+import { getInfos } from './getInfos.js';
 
 export function createFormAdd(){
 

@@ -1,5 +1,5 @@
-import {removeTitleSelect} from './removeTitle';
-import {createFormAdd} from './createForm';
+import {removeTitleSelect} from './removeTitle.js';
+import {createFormAdd} from './createForm.js';
 
 export function clickCreateForm(){
     document.querySelector('#createdCharacter').addEventListener('click', function(){

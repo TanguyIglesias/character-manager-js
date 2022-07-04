@@ -1,15 +1,18 @@
 import "./style.scss";
-import { character } from './src/script/createDesk';
-import {removeTitleSelect} from './src/script/removeTitle';
-import { inputDelEditOne, inputDelEditTwo } from './src/script/editChar';
-import { displayDescOne, displayDescTwo } from './src/script/displayDesk';
-import { buttonDeleteOne, buttonDeleteTwo } from './src/script/buttonDelete';
-import {randomBG} from './src/script/randomBG';
-import {createFormAdd} from './src/script/createForm';
-import {getInfos} from './src/script/getInfos';
-import {submitEdit} from './src/script/sumitEdit';
-import {viewImgFormat} from './src/script/viewImgFormat';
-import {clickCreateForm} from './src/script/createFormAdd';
+import './src/scss/_main.scss';
+import './src/scss/_mobile.scss';
+
+import { character } from './src/script/createDesk.js';
+import {removeTitleSelect} from './src/script/removeTitle.js';
+import { inputDelEditOne, inputDelEditTwo } from './src/script/editChar.js';
+import { displayDescOne, displayDescTwo } from './src/script/displayDesk.js';
+import { buttonDeleteOne, buttonDeleteTwo } from './src/script/buttonDelete.js';
+import {randomBG} from './src/script/randomBG.js';
+import {createFormAdd} from './src/script/createForm.js';
+import {getInfos} from './src/script/getInfos.js';
+import {submitEdit} from './src/script/sumitEdit.js';
+import {viewImgFormat} from './src/script/viewImgFormat.js';
+import {clickCreateForm} from './src/script/createFormAdd.js';
 
 randomBG()
 clickCreateForm()
