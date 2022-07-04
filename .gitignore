@@ -9,8 +9,6 @@ lerna-debug.log*
 
 node_modules
 favicon.svg
-index.html
-main.js
 dist-ssr
 *.local
 
