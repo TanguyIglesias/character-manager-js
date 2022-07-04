@@ -1,9 +1,9 @@
-import {removeTitleSelect} from './removeTitle'
-import { inputDelEditOne, inputDelEditTwo } from './editChar';
-import { displayDescOne, displayDescTwo } from './displayDesk';
-import { buttonDeleteOne, buttonDeleteTwo } from './buttonDelete';
-import { submitEdit } from './sumitEdit';
-import { createFormAdd } from './createForm';
+import {removeTitleSelect} from './removeTitle.js'
+import { inputDelEditOne, inputDelEditTwo } from './editChar.js';
+import { displayDescOne, displayDescTwo } from './displayDesk.js';
+import { buttonDeleteOne, buttonDeleteTwo } from './buttonDelete.js';
+import { submitEdit } from './sumitEdit.js';
+import { createFormAdd } from './createForm.js';
 
 export const character = () => {
     axios.get('https://character-database.becode.xyz/characters').then((response) => {
