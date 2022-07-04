@@ -27,4 +27,14 @@ https://tanguyiglesias.github.io/character-manager-js/
 
 ## Preview
 
-![screen1](readme-chara-create.png)
+![screen1](readme-chara1.png)
+
+![screen2](readme-chara2.png)
+
+![screen3](readme-chara3.png)
+
+![screen4](readme-chara-edit.png)
+
+![screen5](edit-chara-delete.png)
+
+![screen6](readme-chara-create.png)
