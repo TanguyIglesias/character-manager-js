@@ -1,4 +1,7 @@
 import "./style.scss";
+import './src/scss/_main.scss';
+import './src/scss/_mobile.scss';
+
 import { character } from './src/script/createDesk.js';
 import {removeTitleSelect} from './src/script/removeTitle.js';
 import { inputDelEditOne, inputDelEditTwo } from './src/script/editChar.js';
