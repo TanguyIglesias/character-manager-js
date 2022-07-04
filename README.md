@@ -40,7 +40,7 @@ https://tanguyiglesias.github.io/character-manager-js/
 ![screen4](readme-chara-edit.png)
 
 ### Suppression d'un personnage
-![screen5](edit-chara-delete.png)
+![screen5](readme-chara-delete.png)
 
 ### Création d'un personnage
 ![screen6](readme-chara-create.png)
